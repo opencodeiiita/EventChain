@@ -1,3 +1,4 @@
+import 'package:eventchain/utils/size_utils.dart';
 import 'package:flutter/material.dart';
 
 class CenterUi extends StatelessWidget {
@@ -6,23 +7,23 @@ class CenterUi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: 20,
+      spacing: SizeUtils.height(context, 0.025),
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Row(
-          spacing: 25,
+          spacing: SizeUtils.width(context, 0.06),
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: 80,
-              height: 80,
+              width: SizeUtils.width(context, 0.18),
+              height: SizeUtils.width(context, 0.18),
               child: Image.asset('assets/images/appLogo.png'),
             ),
             Text(
               "EventChain",
               style: TextStyle(
                 color: Color(0xFF9810FA),
-                fontSize: 30,
+                fontSize: SizeUtils.text(context, 0.075),
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -30,7 +31,7 @@ class CenterUi extends StatelessWidget {
         ),
         Text(
           "Connect. Catch. Celebrate.",
-          style: TextStyle(color: Color(0xFF717182), fontSize: 15),
+          style: TextStyle(color: Color(0xFF717182), fontSize: SizeUtils.text(context, 0.038)),
         ),
       ],
     );
