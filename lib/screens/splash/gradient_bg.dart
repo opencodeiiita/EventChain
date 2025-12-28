@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'center_ui.dart';
 
 class GradientBg extends StatelessWidget {
-  GradientBg({super.key});
+  const GradientBg({super.key});
 
   @override
   Widget build(BuildContext context) {

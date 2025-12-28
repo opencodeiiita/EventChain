@@ -14,7 +14,7 @@ class CenterUi extends StatelessWidget {
           spacing: SizeUtils.width(context, 0.06),
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               width: SizeUtils.width(context, 0.18),
               height: SizeUtils.width(context, 0.18),
               child: Image.asset('assets/images/appLogo.png'),
@@ -31,7 +31,10 @@ class CenterUi extends StatelessWidget {
         ),
         Text(
           "Connect. Catch. Celebrate.",
-          style: TextStyle(color: Color(0xFF717182), fontSize: SizeUtils.text(context, 0.038)),
+          style: TextStyle(
+            color: Color(0xFF717182),
+            fontSize: SizeUtils.text(context, 0.038),
+          ),
         ),
       ],
     );
