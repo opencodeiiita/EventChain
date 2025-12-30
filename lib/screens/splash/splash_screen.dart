@@ -1,4 +1,4 @@
-import 'package:eventchain/screens/auth/signIn/login_screen.dart';
+import 'package:eventchain/screens/auth/signIn/sign_in_screen.dart';
 import 'gradient_bg.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(Duration(seconds: 1), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => LoginScreen()),
+        MaterialPageRoute(builder: (context) => SignInScreen()),
       );
     });
   }
