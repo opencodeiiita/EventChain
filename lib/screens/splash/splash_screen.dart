@@ -1,4 +1,4 @@
-import 'package:eventchain/screens/auth/signIn/login_screen.dart';
+import 'package:eventchain/screens/auth/signIn/sign_in_screen.dart';
 import 'gradient_bg.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';

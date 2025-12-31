@@ -2,7 +2,9 @@ import 'package:eventchain/utils/size_utils.dart';
 import 'package:eventchain/utils/ui_helper.dart';
 import 'google_button.dart';
 import 'package:flutter/material.dart';
+import 'divider.dart';
 import 'logo.dart';
+import 'email.dart';
 
 class placeHolder extends StatelessWidget {
   const placeHolder({super.key});
@@ -37,8 +39,12 @@ class placeHolder extends StatelessWidget {
                 fontWeight: FontWeight.normal,
                 fontSize: SizeUtils.text(context, 0.04),
               ),
-              SizedBox(height: SizeUtils.height(context, 0.05)),
+              SizedBox(height: SizeUtils.height(context, 0.045)),
               GoogleButton(),
+              SizedBox(height: SizeUtils.height(context, 0.025)),
+              divider(),
+              SizedBox(height: SizeUtils.height(context, 0.025)),
+              EmailField(),
             ],
           ),
         ),

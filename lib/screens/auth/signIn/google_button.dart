@@ -15,7 +15,9 @@ class GoogleButton extends StatelessWidget {
           side: BorderSide(color: Color(0x2F000000), width: 1),
           backgroundColor: Colors.white,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadiusGeometry.circular(10),
+            borderRadius: BorderRadiusGeometry.circular(
+              SizeUtils.height(context, 0.01),
+            ),
           ),
         ),
         onPressed: () {
