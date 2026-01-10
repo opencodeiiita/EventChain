@@ -1,0 +1,95 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+/**
+ * @title Hero of the Village NFT Contract
+ * @dev ERC-721 NFT implementation with deposit, withdraw, and balance tracking
+ */
+contract HeroOfTheVillage is ERC721, Ownable {
+    // Token ID counter
+    uint256 private _nextTokenId;
+    
+    // Events
+    event TokenDeposited(address indexed to, uint256 indexed tokenId);
+    event TokenWithdrawn(address indexed from, uint256 indexed tokenId);
+    
+    /**
+     * @dev Constructor initializes the NFT collection
+     * @param initialOwner Address that will own the contract
+     */
+    constructor(address initialOwner) 
+        ERC721("Hero of the Village", "HOTV") 
+        Ownable(initialOwner) 
+    {}
+    
+    /**
+     * @dev Deposits (mints) a new NFT to the specified address
+     * @param to Address that will receive the NFT
+     * @param tokenId Specific token ID to mint (for custom ID control)
+     */
+    function deposit(address to, uint256 tokenId) public onlyOwner {
+        require(to != address(0), "Cannot deposit to zero address");
+        require(!_exists(tokenId), "Token already exists");
+        
+        _safeMint(to, tokenId);
+        emit TokenDeposited(to, tokenId);
+    }
+    
+    /**
+     * @dev Alternative deposit function that auto-generates token IDs
+     * @param to Address that will receive the NFT
+     * @return tokenId The minted token ID
+     */
+    function depositAuto(address to) public onlyOwner returns (uint256) {
+        require(to != address(0), "Cannot deposit to zero address");
+        
+        uint256 tokenId = _nextTokenId++;
+        _safeMint(to, tokenId);
+        emit TokenDeposited(to, tokenId);
+        
+        return tokenId;
+    }
+    
+    /**
+     * @dev Withdraws (transfers) an NFT from sender to another address
+     * @param tokenId Token ID to withdraw
+     */
+    function withdraw(uint256 tokenId) public {
+        require(_exists(tokenId), "Token does not exist");
+        require(ownerOf(tokenId) == msg.sender, "You are not the owner of this token");
+        
+        address from = msg.sender;
+        _transfer(from, owner(), tokenId);
+        emit TokenWithdrawn(from, tokenId);
+    }
+    
+    /**
+     * @dev Gets the NFT balance of an owner
+     * @param owner Address to check balance for
+     * @return Number of NFTs owned by the address
+     */
+    function getBalance(address owner) public view returns (uint256) {
+        require(owner != address(0), "Cannot query zero address");
+        return balanceOf(owner);
+    }
+    
+    /**
+     * @dev Check if a token exists
+     * @param tokenId Token ID to check
+     * @return bool True if token exists
+     */
+    function _exists(uint256 tokenId) internal view returns (bool) {
+        return _ownerOf(tokenId) != address(0);
+    }
+    
+    /**
+     * @dev Returns the total number of tokens minted
+     * @return Total token count
+     */
+    function totalSupply() public view returns (uint256) {
+        return _nextTokenId;
+    }
+}
