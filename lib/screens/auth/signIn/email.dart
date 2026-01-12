@@ -12,13 +12,13 @@ class EmailField extends StatelessWidget {
       width: SizeUtils.width(context, 0.7),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
-        children: [Email(context)],
+        children: [emailText(context)],
       ),
     );
   }
 }
 
-Widget Email(BuildContext context) {
+Widget emailText(BuildContext context) {
   return SizedBox(
     height: SizeUtils.text(context, 0.04125),
     child: Row(
