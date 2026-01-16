@@ -1,6 +1,7 @@
 import 'package:eventchain/utils/size_utils.dart';
 import 'package:flutter/material.dart';
 import '../../../utils/ui_helper.dart';
+import 'emailInputField.dart';
 
 class EmailField extends StatelessWidget {
   const EmailField({super.key});
@@ -16,6 +17,12 @@ class EmailField extends StatelessWidget {
           emailText(context),
           SizedBox(height: SizeUtils.height(context, 0.005)),
           inputField(context),
+          SizedBox(height: SizeUtils.height(context, 0.005)),
+          passwordText(context),
+          SizedBox(height: SizeUtils.height(context, 0.005)),
+          passInputField(context),
+          SizedBox(height: SizeUtils.height(context, 0.005)),
+          signIn(context),
         ],
       ),
     );
@@ -41,40 +48,33 @@ Widget emailText(BuildContext context) {
   );
 }
 
-Widget inputField(BuildContext context) {
+Widget passwordText(BuildContext context) {
   return ColoredBox(
-    color: Colors.purpleAccent,
+    color: Colors.yellow,
     child: SizedBox(
-      height: SizeUtils.height(context, 0.05),
-      child: TextField(
-        textAlignVertical: TextAlignVertical.center,
-        decoration: InputDecoration(
-          hintText: 'you@example.com',
-
-          prefixIcon: Icon(
-            Icons.email_outlined,
-            size: SizeUtils.height(context, 0.0),
-            color: Colors.grey,
+      height: SizeUtils.text(context, 0.04125),
+      child: Row(
+        children: [
+          UiHelper.customText(
+            text: "Email",
+            textColor: 0xFF0A0A0A,
+            fontWeight: FontWeight.normal,
+            fontSize: SizeUtils.text(context, 0.04),
           ),
-
-          prefixIconConstraints: BoxConstraints(minWidth: 40, minHeight: 40),
-
-          filled: true,
-          fillColor: const Color(0xFFF5F5F5),
-
-          contentPadding: const EdgeInsets.symmetric(
-            vertical: 0,
-            horizontal: 12,
-          ),
-
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(
-              SizeUtils.height(context, 0.01),
-            ),
-            borderSide: BorderSide.none,
-          ),
-        ),
+        ],
       ),
     ),
   );
+}
+
+Widget inputField(BuildContext context) {
+  return; // Your code goes here
+}
+
+Widget passInputField(BuildContext context) {
+  return; // Your code goes here
+}
+
+Widget signIn(BuildContext context) {
+  return; // Your code goes here
 }
